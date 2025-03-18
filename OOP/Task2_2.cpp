@@ -89,7 +89,7 @@ int main() {
 		std::cout << "\nÃåíäåğ: ";
 		database.at(ent).setGender(gender);
 		std::cout << "\nÂîçğàñò: ";
-		database.at(ent).setAge(age);
+		//database.at(ent).setAge(age);
 	}
 	break;
 	case 3: {
@@ -105,7 +105,7 @@ int main() {
 		break;
 	}
 	case 4:
-
+		std::cout << "Hello World";
 		break;
 	default:
 		break;
