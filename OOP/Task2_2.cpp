@@ -54,8 +54,8 @@ int main() {
 	do
 	{
 	int switch_on;
-	std::cin >> switch_on;
 	std::cout << "1.Вывод\n2.Редактирование\n3.Удаление\n4.Добавление\n_<";
+	std::cin >> switch_on;
 	switch (switch_on)
 	{
 	case 1:
@@ -83,13 +83,17 @@ int main() {
 		std::cout << "Введите id для редактирования _<";
 		std::cin >> ent;
 		std::cout << "\nИмя: ";
-		database.at(ent).setName(name);
+		std::cin >> name;
+		database.at(ent-1).setName(name);
 		std::cout << "\nКласс: ";
-		database.at(ent).setClass(class_ent);
+		std::cin >> class_ent;
+		database.at(ent - 1).setClass(class_ent);
 		std::cout << "\nГендер: ";
-		database.at(ent).setGender(gender);
+		std::cin >> gender;
+		database.at(ent - 1).setGender(gender);
 		std::cout << "\nВозраст: ";
-		//database.at(ent).setAge(age);
+		std::cin >> age;
+		database.at(ent - 1).setAge(age);
 	}
 	break;
 	case 3: {
@@ -97,15 +101,15 @@ int main() {
 		for (int i = 0; i < database.size(); i++)
 		{
 			std::cout << "\nИмя: " << database.at(i).getName() << std::endl;
-			std::cout << "Id: " << database.at(i).getId() << std::endl << std::endl;
+			std::cout << "Id: " << database.at(i).getId() <<std::endl;
 		}
 		std::cout << "Введите id для удаления _<";
 		std::cin >> ent;
-		database.erase(database.begin() + ent);
+		database.erase(database.begin() + ent - 1);
 		break;
 	}
 	case 4:
-		std::cout << "Hello World!";
+		
 		break;
 	default:
 		break;
