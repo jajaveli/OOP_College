@@ -1,17 +1,2 @@
-﻿  Task12.cpp
-C:\Users\106010238\source\repos\OOP\OOP\Task12.cpp(46,4): error C2664: "Player &Player::putDice(std::shared_ptr<Dice> &)": невозможно преобразовать аргумент 1 из "std::shared_ptr<Dice>" в "std::shared_ptr<Dice> &"
-  C:\Users\106010238\source\repos\OOP\OOP\Task12.cpp(46,35):
-  Неконстантная ссылка может быть связана только с левосторонним значением
-  C:\Users\106010238\source\repos\OOP\OOP\Task12.cpp(28,10):
-   см. объявление "Player::putDice"
-  C:\Users\106010238\source\repos\OOP\OOP\Task12.cpp(46,4):
-  при попытке сопоставить список аргументов "(std::shared_ptr<Dice>)"
-  
-C:\Users\106010238\source\repos\OOP\OOP\Task12.cpp(50,4): error C2664: "Player &Player::putDice(std::shared_ptr<Dice> &)": невозможно преобразовать аргумент 1 из "std::shared_ptr<Dice>" в "std::shared_ptr<Dice> &"
-  C:\Users\106010238\source\repos\OOP\OOP\Task12.cpp(50,35):
-  Неконстантная ссылка может быть связана только с левосторонним значением
-  C:\Users\106010238\source\repos\OOP\OOP\Task12.cpp(28,10):
-   см. объявление "Player::putDice"
-  C:\Users\106010238\source\repos\OOP\OOP\Task12.cpp(50,4):
-  при попытке сопоставить список аргументов "(std::shared_ptr<Dice>)"
-  
+﻿  Task7.cpp
+  OOP.vcxproj -> C:\Users\106010238\source\repos\OOP\x64\Debug\OOP.exe
