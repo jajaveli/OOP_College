@@ -5,11 +5,11 @@ class DynArr {
 public:
 	DynArr() {//по умолч
 		size = 1;
-		int* arr = new int[size];
+		arr = new int[size];
 	}
 	DynArr(int size) {//параметры
 		this->size = size;
-		int* arr = new int[size];
+		arr = new int[size];
 	}
 	DynArr(DynArr&& obj) noexcept {//перемещение
 		arr = obj.arr;
