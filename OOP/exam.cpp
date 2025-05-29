@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+//111111111111111111111111111111111111111111111111
 //class Point {
 //	std::string name; int cord_x, cord_y, cord_z;
 //public:
@@ -15,21 +16,43 @@
 //	p3.Cin();
 //	p1.Cout(); p2.Cout();p3.Cout();
 //}
-
-
-class Planet {
-	std::string name, color; int num;
+// 22222222222222222222222222222222222222222222222222222222
+//class Planet {
+//	std::string name, color; int num;
+//public:
+//	Planet() : name{ "govno" }, color{ " blue " }, num{ 1 } {};
+//	Planet( std::string name, std::string color, int num) : name{ name }, color{ color }, num{ num } {};
+//	void Input() { std::cin >> name >> color >> num; }
+//	void Output() { std::cout << " "<< name << " " << color << " " << num; }
+//};
+//int main() {
+//	std::vector<Planet>planets;
+//	Planet p1;
+//	planets.push_back(Planet("edgar", "orange", 124124));
+//	planets.push_back(Planet("easdar", "ogse", 16331213));
+//	planets.push_back(Planet());
+//	for (int i = 0; i < planets.size(); i++) { planets.at(i).Output(); }
+//}
+//33333333333333333333333333333333333333333333333
+class Worker {
+	int id, age; std::string name, floor;
 public:
-	Planet() : name{ "govno" }, color{ " blue " }, num{ 1 } {};
-	Planet( std::string name, std::string color, int num) : name{ name }, color{ color }, num{ num } {};
-	void Input() { std::cin >> name >> color >> num; }
-	void Output() { std::cout << " "<< name << " " << color << " " << num; }
+	Worker() {};
+	Worker(int id) :Worker() { this->id = id;};
+	Worker(int id,std::string name) :Worker() { this->id = id; this->name = name; };
+	Worker(int id, std::string name, std::string floor) :Worker() { this->id = id; this->name = name; this->floor = floor; };
+	Worker(int id, std::string name, std::string floor, int age) :Worker() { this->id = id; this->name = name; this->floor = floor; this->age = age; };
+	void info() {
+		std::cout << id << " " << name << " " << floor << " " << age << " ";
+	}
 };
 int main() {
-	std::vector<Planet>planets;
-	Planet p1;
-	planets.push_back(Planet("edgar", "orange", 124124));
-	planets.push_back(Planet("easdar", "ogse", 16331213));
-	planets.push_back(Planet());
-	for (int i = 0; i < planets.size(); i++) { planets.at(i).Output(); }
+	std::vector<Worker>vect;
+	vect.push_back(Worker(1, "Ivan", "laminat", 800));
+	vect.push_back(Worker(2, "Pasha", "plitka", 4));
+	vect.push_back(Worker(3, "Gocno", "kafel", 500));
+	for (int i = 0; i < vect.size(); i++)
+	{
+		vect.at(i).info();
+	}
 }
