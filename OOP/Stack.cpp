@@ -1,7 +1,7 @@
 #include <iostream>
 
 class Node {
-	std::shared_ptr<int>data; std::shared_ptr<Node>next;
+	std::shared_ptr<int>data; std::shared_ptr<Node>prev;
 public:
 	Node(const int data) {
 		//std::cout << "Create n " << data << std::endl;
@@ -9,44 +9,38 @@ public:
 	}
 	~Node() { //std::cout << "Delete n " << *data << std::endl; 
 	}
-	void setData() {}
-	int& getData()const { return *data; }
-	void setNext(std::shared_ptr <Node>next) { this->next = next; }
-	std::shared_ptr<Node> getNext()const { return next; }
+	int& getData() const { return *data; }
+	std::shared_ptr<Node> getPrev() const { return prev; }
+	void setData(int value) { data = std::make_unique<int>(value); }
+	void setPrev(std::shared_ptr<Node> prev_) { prev = prev_; }
 };
 
 class Stack {
-	std::shared_ptr<Node>first; std::shared_ptr<Node>last;
+	std::shared_ptr<Node>top;
 public:
-	Stack() {}
+	Stack() : top(nullptr) {}
+
+	bool isEmpty() const { return top == nullptr; }
 	~Stack() {}
 	void addElement(int value) {
-		std::shared_ptr<Node>new_node = std::make_shared<Node>(value);
-		if (!first)first = last = std::make_shared<Node>(value);
-		else {
-			last->setNext(new_node);
-			//new_node->setNext();
-			last = new_node;
+		std::shared_ptr<Node> new_node = std::make_shared<Node>(value);
+		new_node->setPrev(top);
+		top = new_node;
 		}
-	}
+	
 	int popElement() {
-		std::shared_ptr<Node>tmp = first;
-		first = first->getNext();
+		std::shared_ptr<Node>tmp = top;
+		top = top->getPrev();
 		return tmp->getData();
 	}
-	void clearQueue() {
+	void clearStack() {
 		while (!isEmpty()) {
 			popElement();
-			/*std::shared_ptr<Node>new_node;
-			std::shared_ptr<Node>tmp = first;
-			first->setNext(new_node);
-			first = new_node;
-			tmp.reset();*/
 		}
 
 	}
 	bool isEmpty() {
-		if (!first) {
+		if (!top) {
 			//std::cout << "Список пуст!";
 			return 1;
 		}
@@ -57,18 +51,12 @@ public:
 };
 int main() {
 	system("chcp 1251");
-	Stack q1;
-	q1.isEmpty();
-	for (int i = 0; i < 1000000; i++) {
-		q1.addElement(100);
-	}
-	for (int i = 0; i < 5; i++) {
-		std::cout << q1.popElement();
-	}
-	q1.isEmpty();
-	for (int i = 0; i < 10; i++) {
-		q1.addElement(10);
-	}
-	q1.clearQueue();
-	q1.isEmpty();
+	Stack s1;
+	s1.isEmpty();
+	for (int i = 0; i < 100; i++)s1.addElement(100);
+	for (int i = 0; i < 5; i++)s1.popElement();
+	s1.isEmpty();
+	for (int i = 0; i < 10; i++)s1.addElement(10);
+	s1.clearStack();
+	s1.isEmpty();
 }
