@@ -1,0 +1,52 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <ctime>
+
+int main() {
+    system("chcp 1251");
+    std::vector<std::string> input_files = { "file0.txt", "file1.txt", "file2.txt", "file3.txt" };
+    std::string output_file = "output.txt";
+
+    std::clock_t start = clock();
+
+    std::vector<std::string> all_lines;
+    for (int i = 0; i < input_files.size(); i++) {
+        std::ifstream ifstr(input_files.at(i));
+        std::string line;
+        while (std::getline(ifstr, line)) {
+            all_lines.push_back(line);
+        }
+        ifstr.close();
+    }
+
+    std::ofstream ofstr(output_file);
+    for (int i = 0; i < all_lines.size(); i++) ofstr << all_lines.at(i) << "\n";
+    ofstr.close();
+
+    std::clock_t end = clock();
+    double result = (end - start) / 1000.0;
+    std::cout << "Объединение файлов выполнено за: " << result << " секунд\n";
+
+    std::string object_name;
+    std::cout << "Введите имя объекта для поиска: ";
+    std::getline(std::cin, object_name);
+    std::clock_t start_search = clock();
+
+    std::string name_output_file = object_name + ".txt";
+    std::ofstream name_ofstr(name_output_file, std::ios::app);
+
+    for (int i = 0; i < all_lines.size(); i++) {
+        if (all_lines.at(i).find(object_name) != std::string::npos) {
+            name_ofstr  << all_lines.at(i) << "\n";
+        }
+    }
+    name_ofstr.close();
+
+    std::clock_t end_search = clock();
+    double result_search = (end_search - start_search) / 1000.0;
+
+    std::cout << "Поиск и запись в " << name_output_file << " заняли: " << result_search << " секунд\n";
+    return 0;
+}
